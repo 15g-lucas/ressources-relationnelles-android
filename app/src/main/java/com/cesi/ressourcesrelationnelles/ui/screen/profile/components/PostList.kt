@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cesi.ressourcesrelationnelles.data.model.Resource
 
@@ -44,4 +45,24 @@ fun PostList(
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun PostListPreview()
+{
+    PostList(
+        resources = listOf(
+            Resource(
+                author = "Michelle saucisse",
+                title = "toto",
+                description = "lorem ipsum",
+                url = "http://toto.fr",
+                visibility = 0,
+                createdAt = "",
+                updatedAt = ""
+            )
+        ),
+        padding = PaddingValues(0.dp)
+    )
 }
