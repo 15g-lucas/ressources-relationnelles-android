@@ -3,6 +3,7 @@ package com.cesi.ressourcesrelationnelles.data.model
 import com.squareup.moshi.Json
 
 data class User(
+    val id: Int,
     val username: String,
     val email: String,
     val password: String,

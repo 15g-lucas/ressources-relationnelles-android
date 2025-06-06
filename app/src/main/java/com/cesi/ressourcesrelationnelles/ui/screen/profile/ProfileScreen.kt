@@ -64,7 +64,7 @@ fun ProfileScreen(
             }
         }
         when (uiState.selectedIndex) {
-            0 -> Relations(uiState.relationType, padding)
+            0 -> Relations(uiState.usersByRelation, padding)
             1 -> PostList(uiState.resources, padding)
         }
     }

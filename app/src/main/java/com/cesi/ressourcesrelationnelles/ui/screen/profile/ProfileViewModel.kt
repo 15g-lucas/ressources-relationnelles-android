@@ -3,6 +3,7 @@ package com.cesi.ressourcesrelationnelles.ui.screen.profile
 import androidx.lifecycle.ViewModel
 import com.cesi.ressourcesrelationnelles.data.model.Relation
 import com.cesi.ressourcesrelationnelles.data.model.RelationType
+import com.cesi.ressourcesrelationnelles.data.model.RelationUser
 import com.cesi.ressourcesrelationnelles.data.model.Resource
 import com.cesi.ressourcesrelationnelles.data.model.User
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,7 +13,7 @@ data class ProfileUiState(
     val isLoading: Boolean = false,
     val user: User? = null,
     val relations: List<Relation>? = emptyList(),
-    val relationType: List<RelationType> = emptyList(),
+    val usersByRelation: Map<RelationType, List<RelationUser>> = emptyMap(),
     val resources: List<Resource> = emptyList(),
     val error: String? = null,
     val selectedIndex: Int = 0,
