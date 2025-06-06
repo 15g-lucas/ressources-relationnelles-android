@@ -1,6 +1,6 @@
 package com.cesi.ressourcesrelationnelles.data.model
 
-data class RelationUser(
+data class UserRelation(
     val id: Int,
     val firstName: String,
     val lastName: String,

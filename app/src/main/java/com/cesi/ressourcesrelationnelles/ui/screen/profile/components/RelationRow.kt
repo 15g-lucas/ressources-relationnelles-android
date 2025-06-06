@@ -7,11 +7,11 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.cesi.ressourcesrelationnelles.data.model.RelationUser
-import com.cesi.ressourcesrelationnelles.data.model.User
+import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
+import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 
 @Composable
-fun RelationRow(relation: String, usersByRelation: List<RelationUser>) {
+fun RelationRow(relation: String, usersByRelation: List<UserRelationDto>) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
@@ -35,26 +35,29 @@ fun RelationRow(relation: String, usersByRelation: List<RelationUser>) {
 @Composable
 fun RelationRowPreview() {
     val user = listOf(
-        RelationUser(
+        UserRelationDto(
             id = 1,
             firstName = "Michelle",
             lastName = "Saucisse",
             typeId = 1,
-            profilePicture = "toto"
+            profilePicture = "toto",
+            gates = emptyList()
         ),
-        RelationUser(
+        UserRelationDto(
             id = 2,
             firstName = "Michelle",
             lastName = "Saucisse",
             profilePicture = "toto",
             typeId = 1,
+            gates = emptyList()
         ),
-        RelationUser(
+        UserRelationDto(
             id = 3,
             firstName = "Michelle",
             lastName = "Saucisse",
             profilePicture = "toto",
             typeId = 1,
+            gates = emptyList()
         )
     )
     RelationRow("Famille", usersByRelation = user)

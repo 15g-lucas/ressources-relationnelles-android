@@ -1,4 +1,4 @@
-package com.cesi.ressourcesrelationnelles.data.dto
+package com.cesi.ressourcesrelationnelles.data.dto.request
 
 import com.squareup.moshi.Json
 

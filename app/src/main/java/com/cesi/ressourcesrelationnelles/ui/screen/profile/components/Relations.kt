@@ -8,20 +8,18 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.cesi.ressourcesrelationnelles.data.model.Relation
+import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
 import com.cesi.ressourcesrelationnelles.data.model.RelationType
-import com.cesi.ressourcesrelationnelles.data.model.RelationUser
-import com.cesi.ressourcesrelationnelles.data.model.User
+import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 
 @Composable
 fun Relations(
-    userByRelation: Map<RelationType, List<RelationUser>>,
+    userByRelation: Map<RelationType, List<UserRelationDto>>,
     padding: PaddingValues
 ) {
     LazyColumn(
@@ -66,55 +64,68 @@ fun RelationsPreview() {
             typeName = "Autres"
         )
     )
-    val user = listOf<RelationUser>(
-        RelationUser(
+    val user = listOf<UserRelationDto>(
+        UserRelationDto(
             id = 4,
             firstName = "Michelle",
             lastName = "Saucisse",
             profilePicture = "toto",
-            typeId = 1
+            typeId = 1,
+            gates = emptyList()
         ),
-        RelationUser(
+        UserRelationDto(
             id = 5,
             firstName = "Jean",
             lastName = "Michel",
             profilePicture = "toto",
-            typeId = 2
+            typeId = 2,
+            gates = emptyList()
+
         ),
-        RelationUser(
+        UserRelationDto(
             id = 6,
             firstName = "Bernard",
             lastName = "Malaise",
             profilePicture = "toto",
-            typeId = 3
+            typeId = 3,
+            gates = emptyList()
+
         ),
-        RelationUser(
+        UserRelationDto(
             id = 7,
             firstName = "Laurent",
             lastName = "Didier",
             profilePicture = "toto",
-            typeId = 4
+            typeId = 4,
+            gates = emptyList()
+
         ),
-        RelationUser(
+        UserRelationDto(
             id = 8,
             firstName = "Lulu",
             lastName = "Michel",
             profilePicture = "toto",
-            typeId = 1
+            typeId = 1,
+            gates = emptyList()
+
         ),
-        RelationUser(
+        UserRelationDto(
             id = 9,
             firstName = "Jean",
             lastName = "Michel",
             profilePicture = "toto",
-            typeId = 1
+            typeId = 1,
+            gates = emptyList()
+
         ),
-        RelationUser(
+        UserRelationDto(
             id = 10,
             firstName = "Jean",
             lastName = "Michel",
             profilePicture = "toto",
-            typeId = 1
+            typeId = 1,
+            gates = emptyList()
+
         )
     )
     val usersByRelation = relationType.associateWith { relationType -> user.filter { it.typeId == relationType.typeId } }

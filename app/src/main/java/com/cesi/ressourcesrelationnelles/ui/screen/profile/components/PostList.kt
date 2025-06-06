@@ -14,11 +14,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.cesi.ressourcesrelationnelles.data.dto.response.ResourceDto
 import com.cesi.ressourcesrelationnelles.data.model.Resource
 
 @Composable
 fun PostList(
-    resources: List<Resource>,
+    resources: List<ResourceDto>,
     padding: PaddingValues
 ) {
     Column(
@@ -53,14 +54,15 @@ fun PostListPreview()
 {
     PostList(
         resources = listOf(
-            Resource(
+            ResourceDto(
                 author = "Michelle saucisse",
                 title = "toto",
                 description = "lorem ipsum",
                 url = "http://toto.fr",
                 visibility = 0,
                 createdAt = "",
-                updatedAt = ""
+                updatedAt = "",
+                gates = emptyList()
             )
         ),
         padding = PaddingValues(0.dp)

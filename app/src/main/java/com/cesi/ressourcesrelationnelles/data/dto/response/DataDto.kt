@@ -1,3 +1,7 @@
 package com.cesi.ressourcesrelationnelles.data.dto.response
 
-data class DataDto()
+import com.cesi.ressourcesrelationnelles.data.model.UserRelation
+
+interface DataDto {
+    val gates: List<GateDto?>
+}

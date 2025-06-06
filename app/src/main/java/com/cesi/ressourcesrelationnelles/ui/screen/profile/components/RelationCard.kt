@@ -1,6 +1,5 @@
 package com.cesi.ressourcesrelationnelles.ui.screen.profile.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -18,11 +17,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.cesi.ressourcesrelationnelles.data.model.RelationUser
+import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
+import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 
 @Composable
 fun RelationCard(
-    user: RelationUser
+    user: UserRelationDto
 ) {
     Column(
         modifier = Modifier
@@ -59,12 +59,13 @@ fun RelationCard(
 @Preview
 @Composable
 fun RelationCardPreview() {
-    val user = RelationUser(
+    val user = UserRelationDto(
         id = 1,
         firstName = "Michelle",
         lastName = "Saucisse",
         typeId = 1,
-        profilePicture = "toto"
+        profilePicture = "toto",
+        gates = emptyList()
     )
     RelationCard(user)
 }

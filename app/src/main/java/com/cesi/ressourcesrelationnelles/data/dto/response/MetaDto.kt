@@ -1,3 +1,8 @@
 package com.cesi.ressourcesrelationnelles.data.dto.response
 
-data class MetaDto()
+import com.squareup.moshi.Json
+
+@Json
+data class MetaDto(
+    val gates: List<GateDto?>
+)

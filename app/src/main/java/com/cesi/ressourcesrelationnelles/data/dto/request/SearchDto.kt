@@ -1,4 +1,4 @@
-package com.cesi.ressourcesrelationnelles.data.dto
+package com.cesi.ressourcesrelationnelles.data.dto.request
 
 import com.squareup.moshi.Json
 
@@ -13,6 +13,6 @@ data class SearchDto(
     val aggregates: List<AggregateDto> = emptyList(),
     val instructions: List<InstructionDto> = emptyList(),
     val gates: List<String> = emptyList(),
-    val page: Int,
-    val limit: Int
+    val page: Int = 1,
+    val limit: Int = 10
 )
