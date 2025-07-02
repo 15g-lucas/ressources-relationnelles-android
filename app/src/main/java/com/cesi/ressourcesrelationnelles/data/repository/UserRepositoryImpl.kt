@@ -1,11 +1,11 @@
 package com.cesi.ressourcesrelationnelles.data.repository
 
 import com.cesi.ressourcesrelationnelles.data.api.ApiService
+import com.cesi.ressourcesrelationnelles.data.dto.request.CreateUserDto
 import com.cesi.ressourcesrelationnelles.data.dto.request.FilterDto
 import com.cesi.ressourcesrelationnelles.data.dto.request.SearchDto
 import com.cesi.ressourcesrelationnelles.data.dto.request.SearchRequestDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserDto
-import com.cesi.ressourcesrelationnelles.data.model.User
 import jakarta.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -35,6 +35,18 @@ class UserRepositoryImpl @Inject constructor(
         val request = SearchRequestDto(searchRequest)
         val response = apiService.getUsers(request)
         return response.data
+    }
+
+    override suspend fun register(user: CreateUserDto): UserDto {
+        val response = apiService.register(user)
+        return response
+    }
+
+    override suspend fun login(
+        email: String,
+        password: String
+    ): UserDto {
+        TODO("Not yet implemented")
     }
 
 }

@@ -6,16 +6,12 @@ import com.cesi.ressourcesrelationnelles.data.dto.response.ResourceDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
 import com.cesi.ressourcesrelationnelles.data.model.RelationType
-import com.cesi.ressourcesrelationnelles.data.model.Resource
-import com.cesi.ressourcesrelationnelles.data.model.User
-import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 import com.cesi.ressourcesrelationnelles.data.repository.RelationRepository
 import com.cesi.ressourcesrelationnelles.data.repository.ResourceRepository
 import com.cesi.ressourcesrelationnelles.data.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
-import kotlin.collections.filter
 
 data class ProfileUiState(
     val isLoading: Boolean = false,

@@ -1,4 +1,4 @@
-package com.cesi.ressourcesrelationnelles.ui.screen.profile.components
+package com.cesi.ressourcesrelationnelles.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

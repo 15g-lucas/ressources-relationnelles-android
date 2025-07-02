@@ -1,12 +1,12 @@
 package com.cesi.ressourcesrelationnelles.data.api
 
+import com.cesi.ressourcesrelationnelles.data.dto.request.CreateUserDto
 import com.cesi.ressourcesrelationnelles.data.dto.request.SearchRequestDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.PaginatedResponseDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.RelationTypeDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.ResourceDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserDto
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
-import com.cesi.ressourcesrelationnelles.data.model.RelationType
 import retrofit2.http.Body
 import retrofit2.http.POST
 
@@ -32,4 +32,8 @@ interface ApiService {
         @Body searchRequest: SearchRequestDto
     ): PaginatedResponseDto<RelationTypeDto>
 
+    @POST("users/register")
+    suspend fun register(
+        @Body user: CreateUserDto
+    ): UserDto
 }

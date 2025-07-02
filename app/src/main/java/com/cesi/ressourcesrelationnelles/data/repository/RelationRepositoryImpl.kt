@@ -28,15 +28,18 @@ class RelationRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRelationTypes(): List<RelationType> {
-        val searchRequest = SearchDto(
-                filters = listOf(
-                    FilterDto(
-                        field = "type"
-                    )
-                )
-        )
-        val request = SearchRequestDto(searchRequest)
-        val response = apiService.getUserRelations(request)
-        return response.data
+         val user : List<RelationType> = emptyList()
+        return user
+        /* TODO() */
+//        val searchRequest = SearchDto(
+//                filters = listOf(
+//                    FilterDto(
+//                        field = "type"
+//                    )
+//                )
+//        )
+//        val request = SearchRequestDto(searchRequest)
+//        val response = apiService.getUserRelations(request)
+//        return response.data
     }
 }

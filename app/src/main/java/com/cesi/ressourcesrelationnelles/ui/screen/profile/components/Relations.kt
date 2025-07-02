@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -23,7 +24,8 @@ fun Relations(
     padding: PaddingValues
 ) {
     LazyColumn(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         userByRelation.forEach { userByRelation ->
             item {
@@ -129,5 +131,5 @@ fun RelationsPreview() {
         )
     )
     val usersByRelation = relationType.associateWith { relationType -> user.filter { it.typeId == relationType.typeId } }
-    Relations(userByRelation = usersByRelation, padding = PaddingValues(10.dp))
+    Relations( userByRelation = usersByRelation, padding = PaddingValues(10.dp))
 }

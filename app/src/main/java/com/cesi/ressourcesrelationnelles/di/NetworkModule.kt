@@ -1,7 +1,11 @@
 package com.cesi.ressourcesrelationnelles.di
 
+import com.cesi.ressourcesrelationnelles.data.api.ApiService
+import com.cesi.ressourcesrelationnelles.data.repository.UserRepository
+import com.cesi.ressourcesrelationnelles.data.repository.UserRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,5 +40,11 @@ object NetworkModule {
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): ApiService {
+        return retrofit.create(ApiService::class.java)
     }
 }
