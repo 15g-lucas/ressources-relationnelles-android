@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.cesi.ressourcesrelationnelles.ui.screen.register.components.RegisterScreen
+import com.cesi.ressourcesrelationnelles.ui.screen.login.LoginScreen
+import com.cesi.ressourcesrelationnelles.ui.screen.profile.ProfileScreen
+import com.cesi.ressourcesrelationnelles.ui.screen.register.RegisterScreen
 import com.cesi.ressourcesrelationnelles.ui.theme.RessourcesRelationnellesTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RessourcesRelationnellesTheme {
-                RegisterScreen()
+                ProfileScreen()
             }
         }
     }

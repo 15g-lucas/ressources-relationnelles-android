@@ -1,19 +1,19 @@
-package com.cesi.ressourcesrelationnelles.ui.screen.register
+package com.cesi.ressourcesrelationnelles.ui.screen.register.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cesi.ressourcesrelationnelles.ui.component.InputField
+import com.cesi.ressourcesrelationnelles.ui.screen.register.RegisterUiState
+import com.cesi.ressourcesrelationnelles.ui.screen.register.RegisterViewModel
 
 @Composable
 fun SecurityForm(
@@ -42,7 +42,7 @@ fun SecurityForm(
             value = uiState.password,
             onValueChange = { viewModel.updatePassword(it) },
             placeholder = "Mot de passe",
-            icon = Icons.Default.Password
+            icon = Icons.Default.Lock
         )
         InputField(
             value = uiState.confirmPassword,

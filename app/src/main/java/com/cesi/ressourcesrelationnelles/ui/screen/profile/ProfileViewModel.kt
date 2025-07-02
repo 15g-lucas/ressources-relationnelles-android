@@ -9,8 +9,13 @@ import com.cesi.ressourcesrelationnelles.data.model.RelationType
 import com.cesi.ressourcesrelationnelles.data.repository.RelationRepository
 import com.cesi.ressourcesrelationnelles.data.repository.ResourceRepository
 import com.cesi.ressourcesrelationnelles.data.repository.UserRepository
+import com.cesi.ressourcesrelationnelles.ui.screen.login.LoginUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 data class ProfileUiState(
@@ -31,15 +36,17 @@ class ProfileViewModel @Inject constructor(
     private val relationRepository: RelationRepository,
     private val resourceRepository: ResourceRepository
 ) : ViewModel() {
-    var uiState = ProfileUiState()
-        private set
+    private val _uiState = MutableStateFlow(ProfileUiState())
+    val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
 
     fun updateSelectedIndex(index: Int) {
-        uiState = uiState.copy(selectedIndex = index)
+        _uiState.update { currentState ->
+            currentState.copy(selectedIndex = index)
+        }
     }
 
     private fun loadProfile(id: Int) {
-        uiState = uiState.copy(isLoading = true)
+        _uiState.update { it.copy(isLoading = true) }
         viewModelScope.launch {
             try {
                 val user = userRepository.getUsersById(id)
@@ -48,21 +55,21 @@ class ProfileViewModel @Inject constructor(
                 val resources =
                     resourceRepository.getUserResources(id = id, page = 1, limit = 10)
                 val relationType = relationRepository.getRelationTypes()
-                uiState = uiState.copy(
-                    isLoading = false,
-                    user = user,
-                    relationType = relationType,
-                    userRelations = userRelations,
-                    resources = resources,
-                    usersByRelation = relationType.associateWith { relationType ->
-                        userRelations.filter { it.typeId == relationType.typeId }
-                    }
-                )
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        isLoading = false,
+                        user = user,
+                        relationType = relationType,
+                        userRelations = userRelations,
+                        resources = resources,
+                        usersByRelation = relationType.associateWith { relationType ->
+                            userRelations.filter { it.typeId == relationType.typeId }
+                        }
+                    )
+                }
             } catch (e: Exception) {
-                uiState = uiState.copy(isLoading = false, error = e.message)
+                _uiState.update { it.copy(isLoading = false, error = e.message) }
             }
         }
     }
-
-
 }

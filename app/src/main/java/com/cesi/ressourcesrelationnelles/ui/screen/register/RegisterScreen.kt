@@ -1,4 +1,4 @@
-package com.cesi.ressourcesrelationnelles.ui.screen.register.components
+package com.cesi.ressourcesrelationnelles.ui.screen.register
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -35,8 +35,8 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.cesi.ressourcesrelationnelles.R
-import com.cesi.ressourcesrelationnelles.ui.screen.register.RegisterViewModel
-import com.cesi.ressourcesrelationnelles.ui.screen.register.SecurityForm
+import com.cesi.ressourcesrelationnelles.ui.screen.register.components.PersonalForm
+import com.cesi.ressourcesrelationnelles.ui.screen.register.components.SecurityForm
 import com.cesi.ressourcesrelationnelles.ui.theme.roboto
 
 @Composable

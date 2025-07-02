@@ -3,6 +3,7 @@ package com.cesi.ressourcesrelationnelles.ui.screen.login
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cesi.ressourcesrelationnelles.data.repository.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +18,7 @@ data class LoginUiState(
     val password: String = ""
 )
 
+@HiltViewModel
 class LoginViewModel @Inject constructor(
     private val repository: UserRepository
 ) : ViewModel()

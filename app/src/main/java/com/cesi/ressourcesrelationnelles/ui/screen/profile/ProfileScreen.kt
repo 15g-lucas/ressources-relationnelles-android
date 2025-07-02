@@ -13,12 +13,14 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserDto
 import com.cesi.ressourcesrelationnelles.ui.component.PostList
@@ -26,12 +28,10 @@ import com.cesi.ressourcesrelationnelles.ui.screen.profile.components.Relations
 
 @Composable
 fun ProfileScreen(
-    viewModel: ProfileViewModel = hiltViewModel(),
-    navController: NavController
-)
-{
-    val uiState = viewModel.uiState
-    Scaffold (
+    viewModel: ProfileViewModel = hiltViewModel()
+) {
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    Scaffold(
         topBar = {
         },
         bottomBar = {
@@ -77,13 +77,13 @@ fun ProfileScreen(
         }
     }
 }
+
 @Preview
 @Composable
 fun ProfileScreenTest(
 //    viewModel: ProfileViewModel = hiltViewModel(),
 //    navController: NavController
-)
-{
+) {
     val uiState = ProfileUiState(
         isLoading = false,
         user = UserDto(
@@ -115,7 +115,7 @@ fun ProfileScreenTest(
         selectedIndex = 0,
         options = listOf("Relations", "Posts")
     )
-    Scaffold (
+    Scaffold(
         topBar = {
         },
         bottomBar = {
@@ -139,7 +139,7 @@ fun ProfileScreenTest(
                 uiState.options.forEachIndexed { index, label ->
                     SegmentedButton(
                         shape = RoundedCornerShape(32.dp),
-                        onClick = {  },
+                        onClick = { },
                         selected = uiState.selectedIndex == index,
                         label = { Text(label) },
                         icon = {},
