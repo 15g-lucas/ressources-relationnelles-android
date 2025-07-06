@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 
 @Json
 data class UserDto (
-    val id: Int,
+    override val id: Int,
     val username: String,
     val email: String,
     val password: String,
@@ -22,5 +22,5 @@ data class UserDto (
     val role: Int,
     @Json(name = "is_active") val isActive: Boolean,
     @Json(name = "last_login") val lastLogin: String,
-    override val gates: List<GateDto?>
+//    override val gates: List<GateDto?>
 ): DataDto

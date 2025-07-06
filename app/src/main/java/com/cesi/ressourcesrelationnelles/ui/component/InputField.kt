@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -22,6 +23,7 @@ fun InputField(
     icon: ImageVector,
     value: String,
     onValueChange: (String) -> Unit,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
     keyboardType: KeyboardType = KeyboardType.Text
 ) {
     Column(
@@ -51,6 +53,7 @@ fun InputField(
                 unfocusedTextColor = Color(0xFF000000),
                 disabledTextColor = Color(0xFF000000),
             ),
+            visualTransformation = visualTransformation,
             singleLine = true,
             trailingIcon = {
                 Icon(

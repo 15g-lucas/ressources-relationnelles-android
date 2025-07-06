@@ -14,7 +14,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun RelationHeader(
-    relationType: String
+    relationType: String,
+    onSeeAllClick: () -> Unit = {}
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -26,7 +27,7 @@ fun RelationHeader(
             text = relationType
         )
         TextButton(
-            onClick = { /*TODO*/ }
+            onClick = { onSeeAllClick() }
         ) {
             Text(text = "Voir tous")
         }

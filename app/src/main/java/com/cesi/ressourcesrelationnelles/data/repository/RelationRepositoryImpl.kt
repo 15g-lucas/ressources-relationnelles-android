@@ -24,7 +24,37 @@ class RelationRepositoryImpl @Inject constructor(
         )
         val request = SearchRequestDto(searchRequest)
         val response = apiService.getUserRelations(request)
-        return response.data
+        if (response.isSuccessful && response.body() != null) {
+            return response.body()?.data ?: emptyList()
+        } else {
+            throw Exception("Erreur lors de la récupération des relations")
+        }
+    }
+
+    override suspend fun getUserRelationByType(
+        userId: Int,
+        relationTypeId: Int
+    ):  List<UserRelationDto> {
+        val searchRequest = SearchDto(
+            filters = listOf(
+                FilterDto(
+                    field = "user_id",
+                    operator = "eq",
+                    value = userId
+                ),
+                FilterDto(
+                    field = "relation_type_id",
+                    operator = "eq",
+                    value = relationTypeId
+                )
+            )
+        )
+        val request = SearchRequestDto(searchRequest)
+        val response = apiService.getUserRelations(request)
+        if (response.isSuccessful && response.body() != null) {
+            return response.body()?.data ?: emptyList()
+        } else
+            throw Exception("Erreur lors de la récupération des relations")
     }
 
     override suspend fun getRelationTypes(): List<RelationType> {

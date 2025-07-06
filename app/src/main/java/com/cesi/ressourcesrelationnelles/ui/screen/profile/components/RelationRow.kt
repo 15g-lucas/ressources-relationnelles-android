@@ -8,14 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
-import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 
 @Composable
-fun RelationRow(relation: String, usersByRelation: List<UserRelationDto>) {
+fun RelationRow(relation: String, usersByRelation: List<UserRelationDto>,
+                 onSeeAllClick: () -> Unit = {}) {
     Column(
         modifier = Modifier.fillMaxWidth()
     ) {
-        RelationHeader(relationType = relation)
+        RelationHeader(relationType = relation,
+            onSeeAllClick = { onSeeAllClick() })
         LazyRow(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
@@ -40,24 +41,21 @@ fun RelationRowPreview() {
             firstName = "Michelle",
             lastName = "Saucisse",
             typeId = 1,
-            profilePicture = "toto",
-            gates = emptyList()
+            profilePicture = "toto"
         ),
         UserRelationDto(
             id = 2,
             firstName = "Michelle",
             lastName = "Saucisse",
-            profilePicture = "toto",
             typeId = 1,
-            gates = emptyList()
+            profilePicture = "toto"
         ),
         UserRelationDto(
             id = 3,
             firstName = "Michelle",
             lastName = "Saucisse",
-            profilePicture = "toto",
             typeId = 1,
-            gates = emptyList()
+            profilePicture = "toto"
         )
     )
     RelationRow("Famille", usersByRelation = user)

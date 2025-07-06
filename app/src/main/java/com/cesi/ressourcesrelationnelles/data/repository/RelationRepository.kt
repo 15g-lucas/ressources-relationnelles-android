@@ -7,4 +7,6 @@ import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 interface RelationRepository {
     suspend fun getRelationTypes(): List<RelationType>
     suspend fun getUserRelations(id: Int, page: Int?, limit: Int?): List<UserRelationDto>
+    suspend fun getUserRelationByType(userId: Int, relationTypeId: Int):  List<UserRelationDto>
+
 }

@@ -34,13 +34,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import com.cesi.ressourcesrelationnelles.R
+import com.cesi.ressourcesrelationnelles.navigation.NavRoutes
 import com.cesi.ressourcesrelationnelles.ui.screen.register.components.PersonalForm
 import com.cesi.ressourcesrelationnelles.ui.screen.register.components.SecurityForm
 import com.cesi.ressourcesrelationnelles.ui.theme.roboto
 
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
+fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel(),
+        navController: NavController) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     Box(
         modifier = Modifier
@@ -125,7 +128,7 @@ fun RegisterScreen(viewModel: RegisterViewModel = hiltViewModel()) {
                     .fillMaxWidth()
                     .height(50.dp)
                     .padding(horizontal = 30.dp, vertical = 5.dp),
-                onClick = { }
+                onClick = { navController.navigate(NavRoutes.Login.route) }
             ) {
                 Text(text = "Déjà membre ? ", color = Color(0xFF252525))
                 Text("Connecte-toi", fontWeight = FontWeight.Bold)

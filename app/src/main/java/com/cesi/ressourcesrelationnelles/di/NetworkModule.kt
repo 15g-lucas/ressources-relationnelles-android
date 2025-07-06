@@ -1,6 +1,7 @@
 package com.cesi.ressourcesrelationnelles.di
 
 import com.cesi.ressourcesrelationnelles.data.api.ApiService
+import com.cesi.ressourcesrelationnelles.data.network.AuthInterceptor
 import com.cesi.ressourcesrelationnelles.data.repository.UserRepository
 import com.cesi.ressourcesrelationnelles.data.repository.UserRepositoryImpl
 import com.squareup.moshi.Moshi
@@ -25,8 +26,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(
+        authInterceptor: AuthInterceptor
+    ): OkHttpClient {
         return OkHttpClient.Builder()
+            .addNetworkInterceptor(authInterceptor)
             .build()
     }
 
@@ -36,7 +40,7 @@ object NetworkModule {
         okHttpClient: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://localhost.com/")
+            .baseUrl("https://ressources-relationnelles-api-develop-xvsj0x.laravel.cloud/api/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()

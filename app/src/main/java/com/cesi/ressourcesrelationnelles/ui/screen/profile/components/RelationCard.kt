@@ -14,11 +14,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
-import com.cesi.ressourcesrelationnelles.data.model.UserRelation
+import com.cesi.ressourcesrelationnelles.ui.theme.roboto
 
 @Composable
 fun RelationCard(
@@ -29,8 +33,8 @@ fun RelationCard(
             .height(137.dp)
             .width(120.dp)
             .padding(start = 10.dp, top = 5.dp, end = 10.dp, bottom = 5.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween
+        verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.Top),
+        horizontalAlignment = Alignment.Start,
     ) {
         Box(
             modifier = Modifier
@@ -51,7 +55,12 @@ fun RelationCard(
                 .width(100.dp)
                 .height(22.dp),
             text = "${user.firstName} ${user.lastName}",
-            style = typography.bodySmall
+            style = TextStyle(
+                fontSize = 12.sp,
+                fontFamily = roboto,
+                fontWeight = FontWeight(400),
+                color = Color(0xFF000000),
+            )
         )
     }
 }
@@ -64,8 +73,7 @@ fun RelationCardPreview() {
         firstName = "Michelle",
         lastName = "Saucisse",
         typeId = 1,
-        profilePicture = "toto",
-        gates = emptyList()
+        profilePicture = "toto"
     )
     RelationCard(user)
 }

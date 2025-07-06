@@ -24,8 +24,7 @@ fun PostList(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(padding),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(16.dp)
     ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize()
@@ -39,6 +38,7 @@ fun PostList(
                             .background(Color(0xFF1B1F23))
 
                     ) {
+                        PostCard(resource = resources)
 
                     }
                 }
@@ -47,23 +47,3 @@ fun PostList(
     }
 }
 
-@Preview
-@Composable
-fun PostListPreview()
-{
-    PostList(
-        resources = listOf(
-            ResourceDto(
-                author = "Michelle saucisse",
-                title = "toto",
-                description = "lorem ipsum",
-                url = "http://toto.fr",
-                visibility = 0,
-                createdAt = "",
-                updatedAt = "",
-                gates = emptyList()
-            )
-        ),
-        padding = PaddingValues(0.dp)
-    )
-}

@@ -14,13 +14,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.cesi.ressourcesrelationnelles.data.dto.response.UserRelationDto
 import com.cesi.ressourcesrelationnelles.data.model.RelationType
-import com.cesi.ressourcesrelationnelles.data.model.UserRelation
 
 @Composable
 fun Relations(
     userByRelation: Map<RelationType, List<UserRelationDto>>,
+    navController: NavController,
     padding: PaddingValues
 ) {
     LazyColumn(
@@ -33,103 +34,15 @@ fun Relations(
                     modifier = Modifier
                         .padding(5.dp)
                         .clip(RoundedCornerShape(16.dp))
-                        .background(Color(0xFF1B1F23))
+                        .background(Color(0xFFFFFFFF))
                 ) {
                     RelationRow(
                         relation = userByRelation.key.typeName,
-                        usersByRelation = userByRelation.value
+                        usersByRelation = userByRelation.value,
+                        onSeeAllClick = { navController.navigate("relation/${userByRelation.key.typeId}") }
                     )
                 }
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun RelationsPreview() {
-    val relationType = listOf<RelationType>(
-        RelationType(
-            typeId = 1,
-            typeName = "Famille"
-        ),
-        RelationType(
-            typeId = 2,
-            typeName = "Collègues"
-        ),
-        RelationType(
-            typeId = 3,
-            typeName = "Ami(e)s"
-        ),
-        RelationType(
-            typeId = 4,
-            typeName = "Autres"
-        )
-    )
-    val user = listOf<UserRelationDto>(
-        UserRelationDto(
-            id = 4,
-            firstName = "Michelle",
-            lastName = "Saucisse",
-            profilePicture = "toto",
-            typeId = 1,
-            gates = emptyList()
-        ),
-        UserRelationDto(
-            id = 5,
-            firstName = "Jean",
-            lastName = "Michel",
-            profilePicture = "toto",
-            typeId = 2,
-            gates = emptyList()
-
-        ),
-        UserRelationDto(
-            id = 6,
-            firstName = "Bernard",
-            lastName = "Malaise",
-            profilePicture = "toto",
-            typeId = 3,
-            gates = emptyList()
-
-        ),
-        UserRelationDto(
-            id = 7,
-            firstName = "Laurent",
-            lastName = "Didier",
-            profilePicture = "toto",
-            typeId = 4,
-            gates = emptyList()
-
-        ),
-        UserRelationDto(
-            id = 8,
-            firstName = "Lulu",
-            lastName = "Michel",
-            profilePicture = "toto",
-            typeId = 1,
-            gates = emptyList()
-
-        ),
-        UserRelationDto(
-            id = 9,
-            firstName = "Jean",
-            lastName = "Michel",
-            profilePicture = "toto",
-            typeId = 1,
-            gates = emptyList()
-
-        ),
-        UserRelationDto(
-            id = 10,
-            firstName = "Jean",
-            lastName = "Michel",
-            profilePicture = "toto",
-            typeId = 1,
-            gates = emptyList()
-
-        )
-    )
-    val usersByRelation = relationType.associateWith { relationType -> user.filter { it.typeId == relationType.typeId } }
-    Relations( userByRelation = usersByRelation, padding = PaddingValues(10.dp))
 }

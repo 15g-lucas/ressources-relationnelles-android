@@ -1,5 +1,6 @@
 package com.cesi.ressourcesrelationnelles.ui.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,15 +12,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.cesi.ressourcesrelationnelles.data.model.Resource
+import com.cesi.ressourcesrelationnelles.data.dto.response.ResourceDto
 
 @Composable
-fun PostHeader(resource : Resource) {
+fun PostHeader(resource : ResourceDto) {
     Row(
         modifier = Modifier
+            .background(Color.White)
             .fillMaxWidth()
             .height(55.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp),

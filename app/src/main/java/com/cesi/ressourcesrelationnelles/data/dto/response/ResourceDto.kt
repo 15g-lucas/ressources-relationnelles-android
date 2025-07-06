@@ -4,6 +4,7 @@ import com.squareup.moshi.Json
 
 @Json
 data class ResourceDto(
+    override val id: Int,
     val author: String,
     val title: String,
     val description: String,
@@ -11,5 +12,4 @@ data class ResourceDto(
     val visibility: Int,
     @Json(name = "created_at") val createdAt: String,
     @Json(name = "updated_at") val updatedAt: String,
-    override val gates: List<GateDto?>,
-): DataDto
+) : DataDto

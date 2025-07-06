@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.cesi.ressourcesrelationnelles"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.cesi.ressourcesrelationnelles"
@@ -38,6 +38,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
     buildFeatures {
         compose = true
@@ -80,6 +81,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.coil.network)
     implementation(libs.hilt.navigation.compose)
+    implementation(libs.androidx.datastore.preferences)
     ksp(libs.hilt.compiler)
     ksp(libs.room.compiler)
 

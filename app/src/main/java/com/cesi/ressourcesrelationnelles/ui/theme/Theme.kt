@@ -36,7 +36,7 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun RessourcesRelationnellesTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+//    darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
@@ -50,7 +50,7 @@ fun RessourcesRelationnellesTheme(
 //        darkTheme -> DarkColorScheme
 //        else -> LightColorScheme
 //    }
-    val colorScheme = DarkColorScheme
+    val colorScheme = LightColorScheme
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,

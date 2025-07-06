@@ -12,22 +12,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.cesi.ressourcesrelationnelles.data.dto.response.ResourceDto
 import com.cesi.ressourcesrelationnelles.data.model.Resource
 
 @Composable
-fun PostContent(resource : Resource)
+fun PostContent(resource : ResourceDto)
 {
     Column(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth(),
-            text = resource.title
-        )
+//        Text(
+//            modifier = Modifier
+//                .fillMaxWidth(),
+//            text = "resource.title"
+//        )
         Text(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -39,12 +41,14 @@ fun PostContent(resource : Resource)
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(350.dp)
-                    .clip(RoundedCornerShape(15.dp)),
+                    .background(Color.White, RoundedCornerShape(16.dp))
+                    .clip(RoundedCornerShape(16.dp)),
             )
             {
                 AsyncImage(
                     model = resource.url,
                     contentDescription = null,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .fillMaxWidth()
                 )

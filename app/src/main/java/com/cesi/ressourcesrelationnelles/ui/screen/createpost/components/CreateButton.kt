@@ -22,15 +22,17 @@ import com.cesi.ressourcesrelationnelles.ui.theme.roboto
 fun CreateButton(
     text: String,
     onClick: () -> Unit,
-    icon: ImageVector
+    icon: ImageVector,
+//    enabled: Boolean
 ) {
     Button(
         modifier = Modifier.size(160.dp, 48.dp),
-        onClick = { onClick },
+        onClick = { onClick() },
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 10.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.08f),
-        )
+        ),
+//        enabled = enabled
     ) {
         Icon(
             icon,
